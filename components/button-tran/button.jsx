@@ -1,11 +1,15 @@
+import Link from "next/link";
 import Buttonstyle from "./button.css";
-
-const Button = ({ text, icon }) => {
+// NOTE : distribute the button to render based on if link
+// is provided
+const Button = ({ text, icon, link }) => {
   return (
-    <Buttonstyle>
-      {text}
-      {icon ? <i class={icon}></i> : null}
-    </Buttonstyle>
+    <Link href={link}>
+      <Buttonstyle>
+        {text}
+        {icon ? <i class={icon}></i> : null}
+      </Buttonstyle>
+    </Link>
   );
 };
 

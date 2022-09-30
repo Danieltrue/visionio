@@ -1,11 +1,15 @@
 import Button from "../../components/button-tran/button";
 import Startstyle from "./start.css";
-import "boxicons";
+import Link from "next/link";
 
 const Start = () => {
   return (
     <Startstyle>
-      <Button text={"New Sketch"} icon={"bx bx-plus"} />
+      <Button
+        text={"New Sketch"}
+        icon={"bx bx-plus"}
+        link={"/drawers/drawer"}
+      />
     </Startstyle>
   );
 };
