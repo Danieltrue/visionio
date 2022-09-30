@@ -1,10 +1,10 @@
-import Toolbuttonstyle from "./tool-button";
+import Toolbuttonstyle from "./tool-button.css";
 
-const Toolbutton = ({ icon }) => {
+const Toolbutton = ({ icono }) => {
   return (
     <Toolbuttonstyle>
       <button>
-        <i class={icon}></i>
+        <i class={icono}></i>
       </button>
     </Toolbuttonstyle>
   );

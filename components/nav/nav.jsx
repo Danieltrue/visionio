@@ -9,8 +9,7 @@ const Nav = () => {
       </div>
       <div className="tools">
         <div className="drawer-tools">
-          daddqadad
-          <Toolbutton icon={"bx bx-pencil"} />
+          <Toolbutton icono={"bx bx-pencil"} />
         </div>
       </div>
     </Navstyle>
