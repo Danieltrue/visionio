@@ -7,7 +7,7 @@ const Button = ({ text, icon, link }) => {
     <Link href={link}>
       <Buttonstyle>
         {text}
-        {icon ? <i class={icon}></i> : null}
+        {icon ? <i className={icon}></i> : null}
       </Buttonstyle>
     </Link>
   );

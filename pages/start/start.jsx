@@ -1,6 +1,5 @@
 import Button from "../../components/button-tran/button";
 import Startstyle from "./start.css";
-import Link from "next/link";
 
 const Start = () => {
   return (
