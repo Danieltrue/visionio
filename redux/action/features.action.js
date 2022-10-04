@@ -7,10 +7,3 @@ export const startDrawing = (data) => dispatch => {
         payload: data
     });
 }
-// STOP DRAWING
-export const stopDrawing = () => dispatch => {
-    // Stop drawing
-    dispatch({
-        type: STOP_DRAWING,
-    })
-}

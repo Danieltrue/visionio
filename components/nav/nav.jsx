@@ -2,14 +2,16 @@ import Navstyle from "./nav.css";
 import { ImPencil2 } from "react-icons/im";
 import ToolButton from "../tool-button/tool-button";
 import { useDispatch, useSelector } from "react-redux";
-import { startDrawing, stopDrawing } from "../../redux/action/features.action";
-import { useEffect } from "react";
+import { startDrawing } from "../../redux/action/features.action";
+import { HexColorPicker } from "react-colorful";
+import { useState } from "react";
 
 const Nav = () => {
   const dispatch = useDispatch();
   const { activatePencil } = useSelector(
     (state) => state.rootReducer.featuresReducer
   );
+  const [color, setColor] = useState("#aabbcc");
 
   return (
     <Navstyle>
@@ -17,7 +19,9 @@ const Nav = () => {
       <main className="tools-panel">
         {/* tools here are used to make adjustment to tools being built */}
         <div className="adjusment-tool">
-          <div>{/* <input type="number" value={10} /> */}</div>
+          <div>
+            <HexColorPicker color={color} onChange={setColor} />
+          </div>
         </div>
         {/* tools here are used to draw */}
         <div className="drawing-tool">
