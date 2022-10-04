@@ -3,6 +3,7 @@ import { ImPencil2 } from "react-icons/im";
 import ToolButton from "../tool-button/tool-button";
 import { useDispatch, useSelector } from "react-redux";
 import { startDrawing, stopDrawing } from "../../redux/action/features.action";
+import { useEffect } from "react";
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -16,13 +17,19 @@ const Nav = () => {
       <main className="tools-panel">
         {/* tools here are used to make adjustment to tools being built */}
         <div className="adjusment-tool">
-          <div>
-            <input type="number" value={10} />
-          </div>
+          <div>{/* <input type="number" value={10} /> */}</div>
         </div>
         {/* tools here are used to draw */}
         <div className="drawing-tool">
-          <ToolButton icon={<ImPencil2 />} />
+          <ToolButton
+            active={activatePencil}
+            onClick={(e) => {
+              !activatePencil
+                ? dispatch(startDrawing(true))
+                : dispatch(startDrawing(false));
+            }}
+            icon={<ImPencil2 />}
+          />
         </div>
       </main>
     </Navstyle>
