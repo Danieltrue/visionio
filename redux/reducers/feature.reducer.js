@@ -5,8 +5,6 @@ const featuresReducer = (state = {activatePencil: false}, action) => {
     switch(action.type) {
         case START_DRAWING:
             return {activatePencil: action.payload}
-        case STOP_DRAWING:
-            return {activatePencil: action.payload}
         default:
             return state;
     }

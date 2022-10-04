@@ -2,7 +2,7 @@ import ToolButtonStyle from "./tool-button.css";
 
 const ToolButton = ({ icon, active, ...props }) => {
   return (
-    <ToolButtonStyle style={{ background: active ? "red" : "" }} {...props}>
+    <ToolButtonStyle className={active ? "active" : ""} {...props}>
       {icon}
     </ToolButtonStyle>
   );
