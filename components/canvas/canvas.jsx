@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Canvas = () => {
+  const { activatePencil } = useSelector(
+    (state) => state.rootReducer.featuresReducer
+  );
+
   const canvasRef = useRef(null);
   const [mouseDown, setMouseDown] = useState(false);
   /*this line of code is used to check if the canvas current is currently available to use*/
@@ -14,12 +19,13 @@ const Canvas = () => {
 
   function Draw({ nativeEvent }, ctx) {
     const { offsetX, offsetY } = nativeEvent;
-    if (!mouseDown) return;
-    ctx.fillStyle = "#ff0000";
-    ctx.lineTo(offsetX, offsetY);
-    ctx.strokeStyle = "#000";
-    ctx.stroke();
-    return ctx;
+    if (activatePencil && mouseDown) {
+      ctx.fillStyle = "#ff0000";
+      ctx.lineTo(offsetX, offsetY);
+      ctx.strokeStyle = "#000";
+      ctx.stroke();
+      return ctx;
+    }
   }
 
   function moveDraw({ nativeEvent }, ctx) {

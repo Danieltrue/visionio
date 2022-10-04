@@ -4,9 +4,9 @@ import { START_DRAWING,STOP_DRAWING } from "../constant/features";
 const featuresReducer = (state = {activatePencil: false}, action) => {
     switch(action.type) {
         case START_DRAWING:
-            return {activatePencil: true}
+            return {activatePencil: action.payload}
         case STOP_DRAWING:
-            return {activatePencil: false}
+            return {activatePencil: action.payload}
         default:
             return state;
     }
