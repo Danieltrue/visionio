@@ -17,12 +17,6 @@ const Nav = () => {
     <Navstyle>
       <div className="logs"></div>
       <main className="tools-panel">
-        {/* tools here are used to make adjustment to tools being built */}
-        <div className="adjusment-tool">
-          <div>
-            <HexColorPicker color={color} onChange={setColor} />
-          </div>
-        </div>
         {/* tools here are used to draw */}
         <div className="drawing-tool">
           <ToolButton
@@ -34,6 +28,23 @@ const Nav = () => {
             }}
             icon={<ImPencil2 />}
           />
+        </div>
+        {/* tools here are used to make adjustment to tools being built */}
+        <div className="adjusment-tool">
+          <p>Stroke</p>
+          <div className="tools">
+            <div className="color">
+              <div className="color-inner"></div>
+              <p>#ff0000</p>
+            </div>
+            <div className="inputs">
+              <input type="number" />
+            </div>
+          </div>
+          {/* color pallete */}
+          <div>
+            <HexColorPicker color={color} onChange={setColor} />
+          </div>
         </div>
       </main>
     </Navstyle>
