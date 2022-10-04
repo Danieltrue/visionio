@@ -1,0 +1,2 @@
+export const START_DRAWING = 'START_DRAWING';
+export const STOP_DRAWING = 'STOP_DRAWING';

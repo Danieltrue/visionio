@@ -17,7 +17,7 @@ const Canvas = () => {
     if (!mouseDown) return;
     ctx.fillStyle = "#ff0000";
     ctx.lineTo(offsetX, offsetY);
-    ctx.strokeStyle = "#0099ee";
+    ctx.strokeStyle = "#000";
     ctx.stroke();
     return ctx;
   }
