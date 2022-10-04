@@ -1,47 +1,48 @@
-import { useRef } from "react";
-import CanvasStyle from "./canvas.css";
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Canvas = () => {
   const canvasRef = useRef(null);
-  const [height, setHeight] = React.useState(0);
-  const [width, setWidth] = React.useState(0);
-  const [drawing, setDrawing] = React.useState(false);
-
-  React.useEffect(() => {
-    setHeight(window.innerHeight);
-    setWidth(window.innerWidth);
-    canvasRef.current.width = width !== null ? width : 0;
-    canvasRef.current.height = height !== null ? height : 0;
+  const [mouseDown, setMouseDown] = useState(false);
+  /*this line of code is used to check if the canvas current is currently available to use*/
+  const ctx =
+    canvasRef.current !== null ? canvasRef.current.getContext("2d") : null;
+  //
+  useEffect(() => {
+    canvasRef.current.width = window.innerWidth;
+    canvasRef.current.height = window.innerHeight;
   }, []);
 
-  // Adding this function to
-  function startDrawing({ nativeEvent }) {
-    const event = nativeEvent;
-    //get context
-    const ctx = canvasRef.current.getContext("2d");
-    let x = event.offsetX,
-      y = event.offsetY;
-    draw(x, y, ctx);
-  }
-
-  function draw(x, y, ctx) {
-    if (!drawing) return null;
-    ctx.fillStyle = "#000000";
-    ctx.lineTo(x, y);
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.lineWidth = 10;
+  function Draw({ nativeEvent }, ctx) {
+    const { offsetX, offsetY } = nativeEvent;
+    if (!mouseDown) return;
+    ctx.fillStyle = "#ff0000";
+    ctx.lineTo(offsetX, offsetY);
+    ctx.strokeStyle = "#0099ee";
     ctx.stroke();
+    return ctx;
   }
 
+  function moveDraw({ nativeEvent }, ctx) {
+    /*this function is used to change the position of the pencil when you draw 
+    another stroke on the canvasa*/
+    const { offsetX, offsetY } = nativeEvent;
+    ctx.moveTo(offsetX, offsetX);
+    ctx.beginPath();
+  }
   return (
-    <CanvasStyle
+    <canvas
       ref={canvasRef}
-      onMouseMove={startDrawing}
-      onMouseDown={(e) => setDrawing(true)}
-      onMouseUp={(e) => setDrawing(false)}
-    ></CanvasStyle>
+      onMouseMove={(e) => {
+        /** this line is used to check if there is a context to draw on */
+        ctx !== null ? Draw(e, ctx) : null;
+      }}
+      onMouseDown={(e) => {
+        setMouseDown(true);
+        /** this line is used to check if there is a context to draw on */
+        ctx !== null ? moveDraw(e, ctx) : null;
+      }}
+      onMouseUp={(e) => setMouseDown(false)}
+    ></canvas>
   );
 };
 

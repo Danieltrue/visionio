@@ -4,11 +4,7 @@ import Startstyle from "./start.css";
 const Start = () => {
   return (
     <Startstyle>
-      <Button
-        text={"New Sketch"}
-        icon={"bx bx-plus"}
-        link={"/drawers/drawer"}
-      />
+      <Button text={"New Sketch"} icon={"bx bx-plus"} link={"/drawer/drawer"} />
     </Startstyle>
   );
 };

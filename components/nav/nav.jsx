@@ -1,20 +1,14 @@
-import Toolbutton from "../tool-button/tool-button";
 import Navstyle from "./nav.css";
 
 const Nav = () => {
   return (
     <Navstyle>
-      <div className="logo">
-        <p>Visionio</p>
-      </div>
-      <div className="tools">
-        <div className="drawer-tools">
-          <Toolbutton icono={"bx bx-pencil"} text={"Pencil"}/>
-          <Toolbutton icono={"bx bx-cube"} text={"Easer"}/>
-        </div>
+      <div className="drawing-tool">
+        <button onClick={(e) => alert("da")}>
+          <i className="bx bx-pencil"></i>a
+        </button>
       </div>
     </Navstyle>
   );
 };
-
 export default Nav;
