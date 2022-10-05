@@ -1,7 +1,13 @@
 import NumberInputStyle from "./numberInput.css";
 
-const NumberInput = () => {
-  return <NumberInputStyle type={"number"}></NumberInputStyle>;
+const NumberInput = ({ placeholder, ...props }) => {
+  return (
+    <NumberInputStyle
+      type={"number"}
+      placeholder={placeholder}
+      {...props}
+    ></NumberInputStyle>
+  );
 };
 
 export default NumberInput;

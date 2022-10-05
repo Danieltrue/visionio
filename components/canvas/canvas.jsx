@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { changePencilSize } from "../../hook/pencil-tool.hook";
 
 const Canvas = () => {
   const { activatePencil } = useSelector(
@@ -8,11 +9,9 @@ const Canvas = () => {
   const { color } = useSelector(
     (state) => state.rootReducer.changeColorReducer
   );
-
-  useEffect(() => {
-    let ctx = canvasRef.current.getContext("2d");
-    ctx.strokeStyle = color;
-  }, [color]);
+  const { size } = useSelector(
+    (state) => state.rootReducer.changePencilSizeReducer
+  );
 
   const canvasRef = useRef(null);
   const [mouseDown, setMouseDown] = useState(false);
@@ -25,21 +24,23 @@ const Canvas = () => {
     canvasRef.current.height = window.innerHeight;
   }, []);
 
+  useEffect(() => {
+    ctx ? changePencilSize(ctx, size) : null;
+  }, [size]);
+
+  useEffect(() => {
+    let ctx = canvasRef.current.getContext("2d");
+    ctx.strokeStyle = color ? color : "#000000";
+  }, [color]);
+
   function Draw({ nativeEvent }, ctx) {
     const { offsetX, offsetY } = nativeEvent;
     if (activatePencil && mouseDown) {
-      // ctx.fillStyle = "#ff0000";
       ctx.lineTo(offsetX, offsetY);
-      // ctx.strokeStyle = "#000";
       ctx.stroke();
       return ctx;
     }
   }
-
-  useEffect(() => {
-    const ctx = canvasRef.current.getContext("2d");
-    ctx.strokeStyle = "#0099ee";
-  }, [canvasRef]);
 
   function moveDraw({ nativeEvent }, ctx) {
     /*this function is used to change the position of the pencil when you draw 
@@ -48,6 +49,7 @@ const Canvas = () => {
     ctx.moveTo(offsetX, offsetX);
     ctx.beginPath();
   }
+
   return (
     <canvas
       ref={canvasRef}

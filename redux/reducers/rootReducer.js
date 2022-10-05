@@ -1,10 +1,11 @@
 import {combineReducers} from 'redux';
-import {featuresReducer,changeColorReducer} from './feature.reducer';
+import {featuresReducer,changeColorReducer,changePencilSizeReducer} from './feature.reducer';
 
 
 const rootReducer = combineReducers({
     featuresReducer: featuresReducer,
-    changeColorReducer: changeColorReducer
+    changeColorReducer: changeColorReducer,
+    changePencilSizeReducer: changePencilSizeReducer
 });
 
 export default rootReducer;
