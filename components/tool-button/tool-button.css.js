@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 const ToolButtonStyle = styled.button`
-    
-    padding: 0.3rem 0.4rem;
-    border: 1px solid #aaaaaa;
-    background-color: transparent;
-    & > * {
-            color: #aaaaaa;
-        }
-
+   height: 100%;
+   width: 50px;
+   border: 0;
+   background: transparent;
+   & > * {
+    color: var(--outline-clr);
+    transform: scale(1.2);
+}
     &.active {
         background-color: #0099ee;
         border: 1px solid #0099ee;
