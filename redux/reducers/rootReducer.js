@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux';
-import featuresReducer from './feature.reducer';
+import {featuresReducer,changeColorReducer} from './feature.reducer';
 
 
 const rootReducer = combineReducers({
-    featuresReducer: featuresReducer
+    featuresReducer: featuresReducer,
+    changeColorReducer: changeColorReducer
 });
 
 export default rootReducer;

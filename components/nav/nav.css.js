@@ -25,30 +25,40 @@ const Navstyle = styled.nav`
     p {
         font-size: 12px;
         font-weight: 700;
-        color: #aaa;
     }
     .tools {
         margin: 18px 0;
         display: flex;
+        justify-content: space-between ;
+        align-items: center;
+        input[type=number] {
+            width: 60px;
+            font-weight: 700;
+            height: 46px;
+            padding: 0.3rem;
+            font-size: 90%;
+            border-radius: 2px;
+            border: 1px solid var(--footer-gray);
+            &:focus {
+                outline: none;
+            }
+        }
         .color {
             border: 1px solid var(--footer-gray);
-            border-radius: 3px;
-            width: 100px;
+            border-radius: 2px;
+            width: 120px;
             display: flex;
             align-items: center;
             justify-content: space-around;
             font-size: 90%;
             padding: 0.3rem;
             .color-inner {
-                background-color: red;
-                height: 30px;
-                width: 30px;
-                border-radius: 3px;
+                height: 35px;
+                width: 40px;
+                border-radius: 2px;
             }
             p {
                 text-transform: uppercase;
-                font-weight: 100;
-                letter-spacing: 1px;
                 margin-left: 6px;
             }
         }

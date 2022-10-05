@@ -1,7 +1,7 @@
-import { START_DRAWING,STOP_DRAWING } from "../constant/features";
+import { START_DRAWING,CHANGE_COLOR } from "../constant/features";
 
 
-const featuresReducer = (state = {activatePencil: false}, action) => {
+export const featuresReducer = (state = {activatePencil: false}, action) => {
     switch(action.type) {
         case START_DRAWING:
             return {activatePencil: action.payload}
@@ -10,4 +10,11 @@ const featuresReducer = (state = {activatePencil: false}, action) => {
     }
 }
 
-export default featuresReducer
+export const changeColorReducer = (state = {color: '#000000'}, action) =>  {
+    switch(action.type) {
+        case CHANGE_COLOR:
+            return {color: action.payload}
+        default:
+            return state;
+    }
+}
