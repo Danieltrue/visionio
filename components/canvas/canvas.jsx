@@ -5,6 +5,14 @@ const Canvas = () => {
   const { activatePencil } = useSelector(
     (state) => state.rootReducer.featuresReducer
   );
+  const { color } = useSelector(
+    (state) => state.rootReducer.changeColorReducer
+  );
+
+  useEffect(() => {
+    let ctx = canvasRef.current.getContext("2d");
+    ctx.strokeStyle = color;
+  }, [color]);
 
   const canvasRef = useRef(null);
   const [mouseDown, setMouseDown] = useState(false);
@@ -20,13 +28,18 @@ const Canvas = () => {
   function Draw({ nativeEvent }, ctx) {
     const { offsetX, offsetY } = nativeEvent;
     if (activatePencil && mouseDown) {
-      ctx.fillStyle = "#ff0000";
+      // ctx.fillStyle = "#ff0000";
       ctx.lineTo(offsetX, offsetY);
-      ctx.strokeStyle = "#000";
+      // ctx.strokeStyle = "#000";
       ctx.stroke();
       return ctx;
     }
   }
+
+  useEffect(() => {
+    const ctx = canvasRef.current.getContext("2d");
+    ctx.strokeStyle = "#0099ee";
+  }, [canvasRef]);
 
   function moveDraw({ nativeEvent }, ctx) {
     /*this function is used to change the position of the pencil when you draw 
