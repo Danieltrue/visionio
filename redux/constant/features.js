@@ -1,3 +1,4 @@
 export const START_DRAWING = 'START_DRAWING';
 export const STOP_DRAWING = 'STOP_DRAWING';
 export const CHANGE_COLOR = 'CHANGE_COLOR';
+export const CHANGE_PENCIL_SIZE = "CHANGE_PENCIL_SIZE";

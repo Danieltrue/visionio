@@ -9,7 +9,7 @@ const Colorstyle = styled.div`
     transition: all .5s cubic-bezier(0.23, 1, 0.320, 1);
     border: 1px solid transparent;
     display: flex;
-    width: 40%;
+    width: 50%;
     border-radius: var(--radius);
     align-items: center;
     font-size: 75%;
@@ -20,6 +20,7 @@ const Colorstyle = styled.div`
         width: 20px;
         background-color: #000;
         border-radius: var(--radius);
+        outline: none;
     }
     p {
         text-transform: uppercase;
@@ -28,10 +29,10 @@ const Colorstyle = styled.div`
     .color-holder{
         position: absolute;
         top: 10%;
-        left: -250%;
+        left: -220%;
         height: 230px;
         width: 230px;
-        background-color: red;
+        background-color: var(--outline-clr);
         border-radius: var(--radius);
         border: 1px solid var(--border-clr);
     }
