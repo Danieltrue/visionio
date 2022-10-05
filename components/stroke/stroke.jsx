@@ -8,7 +8,7 @@ const Stroke = () => {
       <p className="adj">Stroke</p>
       <div className="feat">
         <Color color={"#000000"} />
-        <NumberInput />
+        <NumberInput placeholder={"10%"} />
       </div>
     </StrokeStyle>
   );

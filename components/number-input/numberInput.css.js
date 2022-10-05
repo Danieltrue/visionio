@@ -13,7 +13,6 @@ const NumberInputStyle = styled.input`
     padding: 0.9rem 0.4rem;
     font-family: var(--font-sans);
     font-size: 80%;
-    appearance: none;
     border: 0;
     color: var(--font-clr);
     border-radius:var(--radius) ;
