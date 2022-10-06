@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 const StrokeStyle = styled.div`
     padding: 1rem 0;
+    position: relative;
     .feat {
         margin-top: 1rem;
         display: flex;
         align-items: center;
-        input[type=number] {
-            margin-left: var(--pixel);
-        }
+        justify-content: space-between;
     }
 `;
 

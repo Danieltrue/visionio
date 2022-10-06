@@ -1,5 +1,5 @@
 import DrawingToolStyle from "./drawing-tool.css";
-import { HiPencil, HiHome } from "react-icons/hi";
+import { HiOutlinePencil, HiOutlineHome } from "react-icons/hi";
 import ToolButton from "../tool-button/tool-button";
 import { useDispatch, useSelector } from "react-redux";
 import { startDrawing } from "../../redux/action/features.action";
@@ -11,7 +11,7 @@ const DrawingTool = () => {
   );
   return (
     <DrawingToolStyle>
-      <ToolButton icon={<HiHome />} />
+      <ToolButton icon={<HiOutlineHome />} />
       <ToolButton
         active={activatePencil}
         onClick={(e) => {
@@ -19,7 +19,7 @@ const DrawingTool = () => {
             ? dispatch(startDrawing(true))
             : dispatch(startDrawing(false));
         }}
-        icon={<HiPencil />}
+        icon={<HiOutlinePencil />}
       />
     </DrawingToolStyle>
   );

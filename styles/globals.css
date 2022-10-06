@@ -24,7 +24,6 @@ a {
   --size: 72px;
   --small-text: 16px;
   --body: 18px;
-  --gray: #555;
   --footer-gray: #eeeeee;
   --hoverbkclr:  #000000;
   --hoverclr: #ffffff;
@@ -32,11 +31,16 @@ a {
   --nav-color: #242728;
   --logocolor: #F94E8C;
   --font-clr: #3C4143;
+  --font-clr-02: #8a8a8a;
   --pixel: 8px;
   --outline-clr: #fff;
   --profile-nav-clr: #BCC1C3;
   --profile-nav-text-clr: #3C4143;
   --radius: 3px;
+  --shadow-clr: #ccc;
+  --shadow: 2px 2px 5px var(--shadow-clr);
+  --general-clr: #fff;
+  --button-clr: #0099ee;
 }
 
 html {
@@ -60,6 +64,7 @@ html {
 p.adj {
   font-size: 12px;
   font-weight: 500;
+  padding: 0 0.3rem;
   color: var(--font-clr);
 }
 @media (prefers-color-scheme: dark) {

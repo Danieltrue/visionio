@@ -10,7 +10,7 @@ const NumberInputStyle = styled.input`
     }
     width: 60px;
     height: 20px;
-    padding: 0.9rem 0.4rem;
+    padding: 0.8rem 0.4rem;
     font-family: var(--font-sans);
     font-size: 80%;
     border: 0;
