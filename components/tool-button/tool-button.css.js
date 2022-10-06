@@ -10,8 +10,8 @@ const ToolButtonStyle = styled.button`
     transform: scale(1.2);
 }
     &.active {
-        background-color: #0099ee;
-        border: 1px solid #0099ee;
+        background-color: var(--button-clr);
+        border: 1px solid var(--button-clr);
         & > * {
             color: #fff;
         }

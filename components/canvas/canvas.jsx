@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { changePencilSize } from "../../hook/pencil-tool.hook";
+import { changePencilCap, changePencilSize } from "../../hook/pencil-tool.hook";
 
 const Canvas = () => {
   const { activatePencil } = useSelector(
@@ -11,6 +11,9 @@ const Canvas = () => {
   );
   const { size } = useSelector(
     (state) => state.rootReducer.changePencilSizeReducer
+  );
+  const { linecap } = useSelector(
+    (state) => state.rootReducer.changePencilCapReducer
   );
 
   const canvasRef = useRef(null);
@@ -24,6 +27,7 @@ const Canvas = () => {
     canvasRef.current.height = window.innerHeight;
   }, []);
 
+  // this effect change the pencil size
   useEffect(() => {
     ctx ? changePencilSize(ctx, size) : null;
   }, [size]);
@@ -32,6 +36,11 @@ const Canvas = () => {
     let ctx = canvasRef.current.getContext("2d");
     ctx.strokeStyle = color ? color : "#000000";
   }, [color]);
+
+  // this effect changes the pencil cap
+  useEffect(() => {
+    ctx ? changePencilCap(ctx, linecap) : null;
+  }, [linecap]);
 
   function Draw({ nativeEvent }, ctx) {
     const { offsetX, offsetY } = nativeEvent;
