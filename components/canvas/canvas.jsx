@@ -6,6 +6,9 @@ const Canvas = () => {
   const { activatePencil } = useSelector(
     (state) => state.rootReducer.featuresReducer
   );
+  const { activatedEraser } = useSelector(
+    (state) => state.rootReducer.featuresReducer
+  );
   const { color } = useSelector(
     (state) => state.rootReducer.changeColorReducer
   );
@@ -42,6 +45,24 @@ const Canvas = () => {
     ctx ? changePencilCap(ctx, linecap) : null;
   }, [linecap]);
 
+  // Please FIX ME SOON
+  // Please FIX ME SOON
+  // Please FIX ME SOON
+  // Please FIX ME SOON
+  // Please FIX ME SOON
+  // Please FIX ME SOON
+  // Please FIX ME SOON
+
+  useEffect(() => {
+    let ctx = canvasRef.current.getContext("2d");
+    ctx && activatedEraser ? (ctx.strokeStyle = "#ff0000") : null;
+  }, [activatedEraser]);
+  // Please FIX ME SOON
+  // Please FIX ME SOON
+  // Please FIX ME SOON
+  // Please FIX ME SOON
+  // Please FIX ME SOON
+  // Please FIX ME SOON
   function Draw({ nativeEvent }, ctx) {
     const { offsetX, offsetY } = nativeEvent;
     if (activatePencil && mouseDown) {
