@@ -1,4 +1,4 @@
-import { START_DRAWING,CHANGE_COLOR, CHANGE_PENCIL_SIZE, CHANGE_PENCIL_CAP} from "../constant/features";
+import { START_DRAWING,CHANGE_COLOR, CHANGE_PENCIL_SIZE, CHANGE_PENCIL_CAP, ACTIVATE_ERASER} from "../constant/features";
 // START DRAWING
 export const startDrawing = (data) => dispatch => {
     // Start drawing
@@ -29,5 +29,13 @@ export const changePencilCap = (linecap) => dispatch => {
     dispatch({
         type: CHANGE_PENCIL_CAP,
         payload: linecap
+    })
+}
+
+//ACTIVATED ERASER
+export const activateEraser = (data) => (dispatch) => {
+    dispatch({
+        type: ACTIVATE_ERASER,
+        payload: data
     })
 }

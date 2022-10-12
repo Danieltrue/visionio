@@ -9,7 +9,7 @@ const Buttonstyle = styled.button`
     justify-content:center;
     border-radius: 4px;
     font-weight: 500;
-    border: 1px solid var(--gray);
+    border: 1px solid var(--border-clr);
     transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     i {
         font-weight:bold;
