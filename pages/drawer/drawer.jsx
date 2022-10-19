@@ -6,7 +6,7 @@ import Canvasstyle from "./drawer.css";
 
 const Drawer = () => {
   return (
-    <div>
+    <div style={{ height: "hidden" }}>
       <ToolNavigation />
       <Canvasstyle>
         <Nav />
