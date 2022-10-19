@@ -7,7 +7,7 @@ const Canvas = () => {
     (state) => state.rootReducer.featuresReducer
   );
   const { activatedEraser } = useSelector(
-    (state) => state.rootReducer.featuresReducer
+    (state) => state.rootReducer.activateEraserReducer
   );
   const { color } = useSelector(
     (state) => state.rootReducer.changeColorReducer
@@ -33,40 +33,47 @@ const Canvas = () => {
   // this effect change the pencil size
   useEffect(() => {
     ctx ? changePencilSize(ctx, size) : null;
-  }, [size]);
+  }, [size, activatePencil]);
 
+  //this line of code help to change the pencil color
   useEffect(() => {
     let ctx = canvasRef.current.getContext("2d");
     ctx.strokeStyle = color ? color : "#000000";
-  }, [color]);
+  }, [color, activatePencil]);
 
   // this effect changes the pencil cap
   useEffect(() => {
     ctx ? changePencilCap(ctx, linecap) : null;
   }, [linecap]);
 
-  // Please FIX ME SOON
-  // Please FIX ME SOON
-  // Please FIX ME SOON
-  // Please FIX ME SOON
-  // Please FIX ME SOON
-  // Please FIX ME SOON
-  // Please FIX ME SOON
-
   useEffect(() => {
-    let ctx = canvasRef.current.getContext("2d");
-    ctx && activatedEraser ? (ctx.strokeStyle = "#ff0000") : null;
-  }, [activatedEraser]);
-  // Please FIX ME SOON
-  // Please FIX ME SOON
-  // Please FIX ME SOON
-  // Please FIX ME SOON
-  // Please FIX ME SOON
-  // Please FIX ME SOON
+    if (typeof window === undefined) {
+      return;
+    }
+
+    // window.addEventListener("resize", resizeCanvas);
+  }, []);
+
+  function resizeCanvas() {
+    canvasRef.current.width = window.innerWidth;
+    canvasRef.current.height = window.innerHeight;
+  }
+
   function Draw({ nativeEvent }, ctx) {
     const { offsetX, offsetY } = nativeEvent;
     if (activatePencil && mouseDown) {
       ctx.lineTo(offsetX, offsetY);
+      ctx.stroke();
+      ctx.lineJoin = "round";
+      return ctx;
+    }
+  }
+
+  function Erase({ nativeEvent }, ctx) {
+    const { offsetX, offsetY } = nativeEvent;
+    if (activatedEraser && mouseDown) {
+      ctx.lineTo(offsetX, offsetY);
+      ctx.strokeStyle = "#ffffff";
       ctx.stroke();
       return ctx;
     }
@@ -86,6 +93,7 @@ const Canvas = () => {
       onMouseMove={(e) => {
         /** this line is used to check if there is a context to draw on */
         ctx !== null ? Draw(e, ctx) : null;
+        ctx !== null ? Erase(e, ctx) : null;
       }}
       onMouseDown={(e) => {
         setMouseDown(true);
