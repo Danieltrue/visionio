@@ -68,6 +68,15 @@ const Canvas = () => {
       return ctx;
     }
   }
+  function Draw2({ changedTouches }, ctx) {
+    const { clientX, clientY } = changedTouches[0];
+    if (activatePencil) {
+      ctx.lineTo(clientX, clientY);
+      ctx.stroke();
+      ctx.lineJoin = "round";
+      return ctx;
+    }
+  }
 
   function Erase({ nativeEvent }, ctx) {
     const { offsetX, offsetY } = nativeEvent;
@@ -94,6 +103,9 @@ const Canvas = () => {
         /** this line is used to check if there is a context to draw on */
         ctx !== null ? Draw(e, ctx) : null;
         ctx !== null ? Erase(e, ctx) : null;
+      }}
+      onTouchMove={(e) => {
+        ctx !== null ? Draw2(e.nativeEvent, ctx) : null;
       }}
       onMouseDown={(e) => {
         setMouseDown(true);
