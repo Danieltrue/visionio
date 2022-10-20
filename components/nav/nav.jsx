@@ -25,7 +25,7 @@ const Nav = ({ mobile }) => {
     <Navstyle
       as={motion.div}
       initial={{
-        y: "70%",
+        y: "80%",
       }}
       animate={{
         y: mobile && activatedMobileNav ? "0%" : "80%",
