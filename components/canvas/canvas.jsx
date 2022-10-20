@@ -33,7 +33,7 @@ const Canvas = () => {
   // this effect change the pencil size
   useEffect(() => {
     ctx ? changePencilSize(ctx, size) : null;
-  }, [size, activatePencil]);
+  }, [size, ctx]);
 
   //this line of code help to change the pencil color
   useEffect(() => {
@@ -44,20 +44,7 @@ const Canvas = () => {
   // this effect changes the pencil cap
   useEffect(() => {
     ctx ? changePencilCap(ctx, linecap) : null;
-  }, [linecap]);
-
-  useEffect(() => {
-    if (typeof window === undefined) {
-      return;
-    }
-
-    // window.addEventListener("resize", resizeCanvas);
-  }, []);
-
-  function resizeCanvas() {
-    canvasRef.current.width = window.innerWidth;
-    canvasRef.current.height = window.innerHeight;
-  }
+  }, [linecap, ctx]);
 
   function Draw({ nativeEvent }, ctx) {
     const { offsetX, offsetY } = nativeEvent;
@@ -68,12 +55,26 @@ const Canvas = () => {
       return ctx;
     }
   }
-  function Draw2({ changedTouches }, ctx) {
-    const { clientX, clientY } = changedTouches[0];
+  //
+  function TouchDrawing(e, ctx) {
+    const eXT = e.target.getBoundingClientRect();
+    const { clientX, clientY } = e.nativeEvent.changedTouches[0];
     if (activatePencil) {
-      ctx.lineTo(clientX, clientY);
+      ctx.lineTo(clientX - eXT.x, clientY - eXT.y);
       ctx.stroke();
-      ctx.lineJoin = "round";
+      ctx.lineJoin = linecap;
+      return ctx;
+    }
+  }
+  //
+  function TouchErasing(e, ctx) {
+    const eXT = e.target.getBoundingClientRect();
+    const { clientX, clientY } = e.nativeEvent.changedTouches[0];
+    if (activatedEraser) {
+      ctx.lineTo(clientX - eXT.x, clientY - eXT.y);
+      ctx.strokeStyle = "#ffffff";
+      ctx.stroke();
+      ctx.lineJoin = linecap;
       return ctx;
     }
   }
@@ -105,7 +106,12 @@ const Canvas = () => {
         ctx !== null ? Erase(e, ctx) : null;
       }}
       onTouchMove={(e) => {
-        ctx !== null ? Draw2(e.nativeEvent, ctx) : null;
+        ctx !== null ? TouchDrawing(e, ctx) : null;
+        ctx !== null ? TouchErasing(e, ctx) : null;
+      }}
+      onTouchStart={(e) => {
+        /** this line is used to check if there is a context to draw on */
+        ctx !== null ? moveDraw(e, ctx) : null;
       }}
       onMouseDown={(e) => {
         setMouseDown(true);

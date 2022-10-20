@@ -4,16 +4,31 @@ import Variation from "../variation/variation";
 import Stroke from "../stroke/stroke";
 import { useSelector } from "react-redux";
 import Eraser from "../eraser/eraser";
+import NavButton from "./nav-button";
+import { motion } from "framer-motion";
 
-const Nav = () => {
+const Nav = ({ mobile }) => {
   const { activatePencil } = useSelector(
     (state) => state.rootReducer.featuresReducer
   );
   const { activatedEraser } = useSelector(
     (state) => state.rootReducer.activateEraserReducer
   );
+
+  const { activatedMobileNav } = useSelector(
+    (state) => state.rootReducer.activateMobileNavReducer
+  );
+
   return (
-    <Navstyle>
+    <Navstyle
+      as={motion.div}
+      animate={{
+        y: mobile && activatedMobileNav ? "70%" : "0%",
+        boxShadow: activatedMobileNav ? "0px" : `1px 1px 8px var(--shadow-clr)`,
+      }}
+      mobile={mobile === true ? mobile : null}
+    >
+      {mobile ? <NavButton /> : null}
       <main className="tools-panel">
         <AdjHolder show={true}>
           <Variation />
