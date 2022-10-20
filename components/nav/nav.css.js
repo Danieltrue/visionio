@@ -10,9 +10,6 @@ const Navstyle = styled.nav`
   border-radius: var(--radius);
   background-color: #fff;
   border-left: 1px solid var(--border-clr);
-  box-shadow: ${(props) =>
-    props.mobile ? `2px 2px 8px var(--shadow-clr)` : null};
-  transform: ${(props) => (props.mobile ? `translateY(90 %)` : null)};
   .nav-button {
     width: 100%;
   }

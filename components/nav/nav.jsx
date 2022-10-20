@@ -19,16 +19,26 @@ const Nav = ({ mobile }) => {
     (state) => state.rootReducer.activateMobileNavReducer
   );
 
+  console.log(activatedMobileNav);
+
   return (
     <Navstyle
       as={motion.div}
+      initial={{
+        y: "70%",
+      }}
       animate={{
-        y: mobile && activatedMobileNav ? "70%" : "0%",
-        boxShadow: activatedMobileNav ? "0px" : `1px 1px 8px var(--shadow-clr)`,
+        y: mobile && activatedMobileNav ? "0%" : "80%",
+        boxShadow:
+          mobile && activatedMobileNav
+            ? `1px 1px 8px var(--shadow-clr)`
+            : `0px`,
       }}
       mobile={mobile === true ? mobile : null}
     >
-      {mobile ? <NavButton /> : null}
+      {(mobile && activatePencil) || (mobile && activatedEraser) ? (
+        <NavButton />
+      ) : null}
       <main className="tools-panel">
         <AdjHolder show={true}>
           <Variation />
