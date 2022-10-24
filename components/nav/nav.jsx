@@ -19,16 +19,14 @@ const Nav = ({ mobile }) => {
     (state) => state.rootReducer.activateMobileNavReducer
   );
 
-  console.log(activatedMobileNav);
-
   return (
     <Navstyle
       as={motion.div}
       initial={{
-        y: "85%",
+        y: "83%",
       }}
       animate={{
-        y: mobile && activatedMobileNav ? "0%" : "85%",
+        y: mobile && activatedMobileNav ? "0%" : "89%",
         boxShadow:
           mobile && activatedMobileNav
             ? `1px 1px 8px var(--shadow-clr)`
