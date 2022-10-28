@@ -22,17 +22,14 @@ const Nav = ({ mobile }) => {
   return (
     <Navstyle
       as={motion.div}
-      initial={{
-        y: "83%",
-      }}
+      mobile={mobile === true ? mobile : null}
       animate={{
-        y: mobile && activatedMobileNav ? "0%" : "89%",
+        y: mobile && activatedMobileNav ? "0%" : "89.9%",
         boxShadow:
           mobile && activatedMobileNav
             ? `1px 1px 8px var(--shadow-clr)`
             : `0px`,
       }}
-      mobile={mobile === true ? mobile : null}
     >
       {(mobile && activatePencil) || (mobile && activatedEraser) ? (
         <NavButton />

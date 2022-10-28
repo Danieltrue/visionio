@@ -26,8 +26,9 @@ const Canvas = () => {
     canvasRef.current !== null ? canvasRef.current.getContext("2d") : null;
   //
   useEffect(() => {
-    canvasRef.current.width = window.innerWidth;
-    canvasRef.current.height = window.innerHeight;
+    const dpi = window.devicePixelRatio;
+    canvasRef.current.width = window.innerWidth * dpi;
+    canvasRef.current.height = window.innerHeight * dpi;
   }, []);
 
   // this effect change the pencil size
@@ -49,7 +50,7 @@ const Canvas = () => {
   function Draw({ nativeEvent }, ctx) {
     const { offsetX, offsetY } = nativeEvent;
     if (activatePencil && mouseDown) {
-      ctx.lineTo(offsetX, offsetY);
+      let lines = ctx.lineTo(offsetX, offsetY);
       ctx.stroke();
       ctx.lineJoin = "round";
       return ctx;
@@ -66,6 +67,7 @@ const Canvas = () => {
       return ctx;
     }
   }
+
   //
   function TouchErasing(e, ctx) {
     const eXT = e.target.getBoundingClientRect();
