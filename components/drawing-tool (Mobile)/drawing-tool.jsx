@@ -40,18 +40,18 @@ const DrawingToolMobile = () => {
         className="tools-grided"
       >
         <ToolButton
-          active={activatePencil}
-          onClick={(e) => {
-            setActivatePencil(activatePencil, dispatch);
-          }}
-          icon={<BsPencil />}
-        />
-        <ToolButton
           active={activatedEraser}
           onClick={(e) => {
             setActivateEraser(activatedEraser, dispatch);
           }}
           icon={<BsEraser />}
+        />
+        <ToolButton
+          active={activatePencil}
+          onClick={(e) => {
+            setActivatePencil(activatePencil, dispatch);
+          }}
+          icon={<BsPencil />}
         />
       </motion.section>
     </DrawingToolMobileStyle>
