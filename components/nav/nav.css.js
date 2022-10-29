@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Navstyle = styled.nav`
   position: absolute;
+  /* top: ${(props) => (props.mobile ? null : "0%")}; */
   right: ${(props) => (props.mobile ? 0 : 0)};
   left: ${(props) => (props.mobile ? 0 : null)};
   bottom: ${(props) => (props.mobile ? 0 : null)};
