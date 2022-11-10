@@ -7,6 +7,7 @@ import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import FeatureButton from "../feature-button/feature-button";
 import AdvanceFeatureHolder from "../advance-feature-holder/advance-feature-holder";
 import { useState } from "react";
+import ColorMobile from "../color (Mobile)/color";
 
 const Stroke = () => {
   const dispatch = useDispatch();
@@ -17,11 +18,20 @@ const Stroke = () => {
     (state) => state.rootReducer.changePencilSizeReducer
   );
 
+  const { responsive } = useSelector(
+    (state) => state.rootReducer.reponsiveSizeReducer
+  );
+
   return (
     <StrokeStyle>
       <p className="adj">Stroke</p>
       <div className="feat">
-        <Color color={"#000000"} />
+        {responsive <= 500 ? (
+          <ColorMobile color={"#000000"} />
+        ) : (
+          <Color color={"#000000"} />
+        )}
+
         <NumberInput
           onChange={(e) => dispatch(changePencilSize(e.target.value))}
           placeholder={size + "%"}
