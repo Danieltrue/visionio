@@ -7,6 +7,7 @@ import {
   setActivatePencil,
   setActivateEraser,
 } from "../../hook/toolActivation";
+import ToolLink from "../tool-button/tool-link/tool-link";
 
 const DrawingTool = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const DrawingTool = () => {
   );
   return (
     <DrawingToolStyle>
-      <ToolButton icon={<HiOutlineHome />} />
+      <ToolLink hover={true} icon={<HiOutlineHome />} />
       <ToolButton
         active={activatedEraser}
         onClick={(e) => {

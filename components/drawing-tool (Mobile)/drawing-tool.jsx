@@ -9,6 +9,7 @@ import {
 } from "../../hook/toolActivation";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import ToolLink from "../tool-button/tool-link/tool-link";
 
 const DrawingToolMobile = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const DrawingToolMobile = () => {
   const [mobileToolNav, setMobileToolNav] = useState(false);
   return (
     <DrawingToolMobileStyle>
-      <ToolButton icon={<HiOutlineHome />} />
+      <ToolLink hover={true} icon={<HiOutlineHome />} />
       <ToolButton
         icon={<BsThreeDots />}
         onClick={(e) => setMobileToolNav(!mobileToolNav)}
